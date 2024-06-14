@@ -7,5 +7,7 @@ inventario = Flask(__name__)
 def home():
     return "Primer Inventario , Hola"
 
-inventario.run()
+inventario.run(debug=True, port=4500)
+
+
 
