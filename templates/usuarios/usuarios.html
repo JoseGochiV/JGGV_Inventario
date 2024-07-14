@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Nuevo Usuario{% endblock %}
+{% block content %}
+	<body>
+		
+		<!-- Main container -->
+		<main class="full-box main-container">
+			<!-- Nav lateral -->
+			<section class="full-box nav-lateral">
+				<div class="full-box nav-lateral-bg show-nav-lateral"></div>
+				<div class="full-box nav-lateral-content">
+					<figure class="full-box nav-lateral-avatar">
+						<i class="far fa-times-circle show-nav-lateral"></i>
+						<img src="{{ url_for ('static', filename= 'assets/avatar/Avatar.png ') }}" class="img-fluid" alt="Avatar">
+						<figcaption class="roboto-medium text-center">
+							? (Cambios con python) <br><small class="roboto-condensed-light">? ( Cambio con python)</small>
+						</figcaption>
+					</figure>
+					<div class="full-box nav-lateral-bar"></div>
+					<nav class="full-box nav-lateral-menu">
+						<ul>
+
+							<li>
+								<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; ?(cambiar python) <i class="fas fa-chevron-down"></i></a>
+								<ul>
+									
+
+							<li>
+														
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+			<!-- Page content -->
+			<section class="full-box page-content">
+				<nav class="full-box navbar-info">
+					<a href="#" class="float-left show-nav-lateral">
+						<i class="fas fa-exchange-alt"></i>
+					</a>
+					<a href="user-update.html">
+						<i class="fas fa-user-cog"></i>
+					</a>
+					<a href="#" class="btn-exit-system">
+						<i class="fas fa-power-off"></i>
+					</a>
+				</nav>
+
+				<!-- Page header -->
+				<div class="full-box page-header">
+					<h3 class="text-left">
+						<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE
+					</h3>
+					<p class="text-justify">
+						otra descripcion 
+					</p>
+				</div>
+
+				<div class="container-fluid">
+					<ul class="full-box list-unstyled page-nav-tabs">
+						<li>
+							<a class="active" href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE</a>
+						</li>
+						<li>
+							<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
+						</li>
+						<li>
+							<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE</a>
+						</li>
+					</ul>	
+				</div>
+				
+				<!-- Content here-->
+				<div class="container-fluid">
+					<form action="/usuarios" method="POST" class="form-neon" autocomplete="off">
+						<fieldset>
+							<legend><i class="fas fa-user"></i> &nbsp;Usuario Nuevo</legend>
+							<div class="container-fluid">
+								<div class="row">
+								<!--   
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="cliente_dni" class="bmd-label-floating">DNI</label>
+											<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="cliente_dni" id="cliente_dni" maxlength="27">
+										</div>
+									</div>
+	--> 
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="usuario" class="bmd-label-floating">Nombre</label>
+											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40">
+										</div>
+									</div>
+									<div class="col-12 col-md-4">
+										<div class="form-group">
+											<label for="apellidoP" class="bmd-label-floating">Apellidos Paterno</label>
+											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido" id="cliente_apellido" maxlength="40">
+										</div>
+									</div>
+
+									<div class="col-12 col-md-4">
+										<div class="form-group">
+											<label for="apellidoM" class="bmd-label-floating">Apellidos Materno</label>
+											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido" id="cliente_apellido" maxlength="40">
+										</div>
+									</div>
+
+									<div class="col-12 col-md-4">
+										<div class="form-group">
+											<label for="claveU" class="bmd-label-floating">Clave Usuario</label>
+											<input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#- ]{1,150}" class="form-control" name="cliente_direccion" id="cliente_direccion" maxlength="150">
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br><br><br>
+						<p class="text-center" style="margin-top: 40px;">
+							<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+							&nbsp; &nbsp;
+							<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
+						</p>
+					</form>
+				</div>	
+
+			</section>
+		</main>
+		
+		{% endblock %}
+		
+	
