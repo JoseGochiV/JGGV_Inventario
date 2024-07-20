@@ -14,7 +14,7 @@ inventario.config['MYSQL_DB'] = "inventario_v1.0"
 @inventario.route('/')
 def home():
 
-    return "Primer Inventario , Hola:Compadre"
+    return "Primer Inventario , Hola:Compadre2"
 
 @inventario.route('/usuarios',)
 def User():
@@ -38,6 +38,7 @@ def Borrar():
 """
 
 
+#inventario.run(debug=True, port=0.0.0.0) # Docker con puesto 5000
 inventario.run(debug=True, port=4500)
 
 
