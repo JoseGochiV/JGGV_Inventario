@@ -13,7 +13,7 @@
 						<i class="far fa-times-circle show-nav-lateral"></i>
 						<img src="{{ url_for ('static', filename= 'assets/avatar/Avatar.png ') }}" class="img-fluid" alt="Avatar">
 						<figcaption class="roboto-medium text-center">
-							? (Cambios con python) <br><small class="roboto-condensed-light">? ( Cambio con python)</small>
+							Jose Guadalupe Gochi V <br><small class="roboto-condensed-light">Administrador</small>
 						</figcaption>
 					</figure>
 					<div class="full-box nav-lateral-bar"></div>
@@ -21,7 +21,7 @@
 						<ul>
 
 							<li>
-								<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; ?(cambiar python) <i class="fas fa-chevron-down"></i></a>
+								<a href="/" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Inicio <i class="fas fa-chevron-down"></i></a>
 								<ul>
 									
 
@@ -51,9 +51,7 @@
 					<h3 class="text-left">
 						<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE
 					</h3>
-					<p class="text-justify">
-						otra descripcion 
-					</p>
+				
 				</div>
 
 				<div class="container-fluid">
@@ -62,11 +60,12 @@
 							<a class="active" href="client-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR CLIENTE</a>
 						</li>
 						<li>
-							<a href="client-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
+							<a href="/listar"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE CLIENTES</a>
 						</li>
+						<!--
 						<li>
 							<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE</a>
-						</li>
+						</li>-->
 					</ul>	
 				</div>
 				
@@ -77,38 +76,36 @@
 							<legend><i class="fas fa-user"></i> &nbsp;Usuario Nuevo</legend>
 							<div class="container-fluid">
 								<div class="row">
-								<!--   
+									<!--   
 									<div class="col-12 col-md-6">
 										<div class="form-group">
 											<label for="cliente_dni" class="bmd-label-floating">DNI</label>
-											<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="cliente_dni" id="cliente_dni" maxlength="27">
+											<input type="text" pattern="[a-zA-Z0-9-]{1,27}" class="form-control" id="cliente_dni" maxlength="27">
 										</div>
 									</div>
-	--> 
+									--> 
 									<div class="col-12 col-md-6">
 										<div class="form-group">
-											<label for="usuario" class="bmd-label-floating">Nombre</label>
+											<label for="cliente_nombre" class="bmd-label-floating">Nombre</label>
 											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_nombre" id="cliente_nombre" maxlength="40">
 										</div>
 									</div>
 									<div class="col-12 col-md-4">
 										<div class="form-group">
-											<label for="apellidoP" class="bmd-label-floating">Apellidos Paterno</label>
-											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido" id="cliente_apellido" maxlength="40">
+											<label for="cliente_apellido_paterno" class="bmd-label-floating">Apellido Paterno</label>
+											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido_paterno" id="cliente_apellido_paterno" maxlength="40">
 										</div>
 									</div>
-
 									<div class="col-12 col-md-4">
 										<div class="form-group">
-											<label for="apellidoM" class="bmd-label-floating">Apellidos Materno</label>
-											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido" id="cliente_apellido" maxlength="40">
+											<label for="cliente_apellido_materno" class="bmd-label-floating">Apellido Materno</label>
+											<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" name="cliente_apellido_materno" id="cliente_apellido_materno" maxlength="40">
 										</div>
 									</div>
-
 									<div class="col-12 col-md-4">
 										<div class="form-group">
-											<label for="claveU" class="bmd-label-floating">Clave Usuario</label>
-											<input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#- ]{1,150}" class="form-control" name="cliente_direccion" id="cliente_direccion" maxlength="150">
+											<label for="cliente_direccion" class="bmd-label-floating">Clave Empleado</label>
+											<input type="text" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#- ]{1,150}" class="form-control" name="clave_empleado" id="clave_empleado" maxlength="150">
 										</div>
 									</div>
 								</div>
@@ -121,6 +118,7 @@
 							<button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
 						</p>
 					</form>
+					
 				</div>	
 
 			</section>
