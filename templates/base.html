@@ -2,63 +2,70 @@
 <html lang="es">
 <head>
     {% block head %}
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- Normalize V8.0.1 -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
 
     <!-- Bootstrap V4.3 -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
     <!-- Bootstrap Material Design V4.0 -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename= 'css/bootstrap-material-design.min.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-material-design.min.css') }}">
 
     <!-- Font Awesome V5.9.0 -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename= 'css/all.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
 
     <!-- Sweet Alerts V8.13.0 CSS file -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename= 'css/sweetalert2.min.css') }}">
-
-    <!-- Sweet Alert V8.13.0 JS file-->
-    <script src="{{ url_for ('static',filename= 'js/sweetalert2.min.js') }}" ></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sweetalert2.min.css') }}">
 
     <!-- jQuery Custom Content Scroller V3.1.5 -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename= 'css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.mCustomScrollbar.css') }}">
     
     <!-- General Styles -->
-    <link rel="stylesheet" href="{{ url_for ('static',filename= 'css/style.css' ) }}">
-    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nuevastyle.css') }}">
 
+    {% endblock %}
 </head>
 <body>
-    
-    {% block content %}{% endblock %}
+    {% block content %}
+    <!-- Main container -->
+    ...
+    {% endblock %}
 
-
-    
     <!--=============================================
     =            Include JavaScript files           =
     ==============================================-->
-    <!-- jQuery V3.4.1 -->
-    <script src="{{ url_for ('static',filename='js/jquery-3.4.1.min.js')}}"></script>
+   <!-- jQuery V3.4.1 -->
+   <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
 
-    <!--popper-->
-    <scriptsrc="{{url_for('static',filename='js/popper.min.js')}}"></script>
+   <!-- Popper -->
+   <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
 
-    <!--BootstrapV4.3-->
-    <scriptsrc="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+   <!-- Bootstrap V4.3 -->
+   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 
-    <!--jQueryCustomContentScrollerV3.1.5-->
-    <scriptsrc="{{url_for('static',filename='js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+   <!-- jQuery Custom Content Scroller V3.1.5 -->
+   <script src="{{ url_for('static', filename='js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 
-    <!--BootstrapMaterialDesignV4.0-->
-    <scriptsrc="{{url_for('static',filename='js/bootstrap-material-design.min.js')}}"></script>
+   <!-- Bootstrap Material Design V4.0 -->
+   <script src="{{ url_for('static', filename='js/bootstrap-material-design.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('body').bootstrapMaterialDesign();
+        });
+    </script>
     
-    <script>$(document).ready(function(){$('body').bootstrapMaterialDesign();});</script>
-
-    <scriptsrc="{{url_for('static',filename='js/main.js')}}"></script>
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    <!-- Notificaciones -->
+    <script src="{{ url_for('static', filename='js/notificar.js') }}"></script>
 </body>
 </html>

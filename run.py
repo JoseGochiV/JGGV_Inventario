@@ -36,6 +36,7 @@ def User():
 
     return render_template("usuarios/usuarios.html")
 
+
 @inventario.route('/listar',methods=["GET", "POST"])
 def listar():
     cur = mysql.connection.cursor()
@@ -46,7 +47,13 @@ def listar():
 
 
 
-#________________________actualizar material_____________________
+@inventario.route('/usuariosactualizar',methods=["GET", "POST"])
+def usuariosactualizar():   
+
+    return render_template("usuarios/usuariosactualizar.html")
+
+
+#________________________actualizar material____________________________________________________________
 
 @inventario.route('/materiales',methods=["GET", "POST"])
 def Materiales():
@@ -85,11 +92,15 @@ def listarMateriales():
     
     return render_template("materiales/listarmaterial.html", materiales=materiales)
 
+@inventario.route('/materialactualizar',methods=["GET", "POST"])
+def materialactualizar():   
 
-#______________________________________________________________________
+   return render_template("materiales/materialactualizar.html")
+
+
 
 #___________________________________actualizar materiales___________________
-
+"""
 @inventario.route('/actualizar')
 def Actualizar():
 
@@ -100,7 +111,7 @@ def ListarActualizar():
 
     return render_template("actualizar/listaactualizar.html")
 
-
+"""
 
 
 
