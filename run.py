@@ -18,6 +18,7 @@ def home():
     titulo="Inventario"
     return render_template("home/home.html",titulo=titulo)
 #________________________usuario___________________________________
+
 @inventario.route('/usuarios',methods=["GET", "POST"])
 def User():
     if request.method == "POST":
@@ -45,12 +46,36 @@ def listar():
     cur.close()
     return render_template("usuarios/listar.html", usuarios=usuarios)
 
+@inventario.route('/usuariosactualizar/<int:id>', methods=["GET", "POST"])
+def usuariosactualizar(id):
+    cur = mysql.connection.cursor()
+    
+    # Obtener el usuario de la base de datos utilizando el ID
+    cur.execute("SELECT * FROM usuarios WHERE id = %s", (id,))
+    usuario = cur.fetchone()
+    cur.close()
 
+    if request.method == "POST":
+        # Recoger los datos del formulario
+        nombre = request.form['cliente_nombre']
+        apellido_paterno = request.form['cliente_apellido_paterno']
+        apellido_materno = request.form['cliente_apellido_materno']
+        clave_empleado = request.form['clave_empleado']
 
-@inventario.route('/usuariosactualizar',methods=["GET", "POST"])
-def usuariosactualizar():   
+        # Actualizar el usuario en la base de datos
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE usuarios 
+            SET nombre = %s, apellido_paterno = %s, apellido_materno = %s, clave_empleado = %s 
+            WHERE id = %s
+        """, (nombre, apellido_paterno, apellido_materno, clave_empleado, id))
+        mysql.connection.commit()
+        cur.close()
 
-    return render_template("usuarios/usuariosactualizar.html")
+        flash('Usuario actualizado correctamente')
+        return redirect(url_for('listar'))
+
+    return render_template("usuarios/usuariosactualizar.html", usuario=usuario)
 
 
 #________________________actualizar material____________________________________________________________
@@ -92,12 +117,41 @@ def listarMateriales():
     
     return render_template("materiales/listarmaterial.html", materiales=materiales)
 
-@inventario.route('/materialactualizar',methods=["GET", "POST"])
-def materialactualizar():   
-
-   return render_template("materiales/materialactualizar.html")
 
 
+
+@inventario.route('/materialactualizar/<int:id>', methods=["GET", "POST"])
+def materialactualizar(id):
+    cur = mysql.connection.cursor()
+
+    # Obtener el material por ID
+    cur.execute("SELECT * FROM materiales WHERE id = %s", (id,))
+    material = cur.fetchone()
+    cur.close()
+
+    if request.method == "POST":
+        # Obtener datos del formulario
+        codigo = request.form['codigo']
+        descripcion = request.form['descripcion']
+        fecha_alta = request.form['fecha_alta']
+        status = request.form['status']
+        responsable = request.form['responsable']
+        fecha_baja = request.form['fecha_baja']
+
+        # Actualizar el material
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE materiales
+            SET codigo = %s, descripcion = %s, fecha_alta = %s, status = %s, responsable = %s, fecha_baja = %s
+            WHERE id = %s
+        """, (codigo, descripcion, fecha_alta, status, responsable, fecha_baja, id))
+        mysql.connection.commit()
+        cur.close()
+
+        flash('Material actualizado correctamente')
+        return redirect(url_for('listarMateriales'))
+
+    return render_template("materiales/materialactualizar.html", material=material)
 
 #___________________________________actualizar materiales___________________
 """
