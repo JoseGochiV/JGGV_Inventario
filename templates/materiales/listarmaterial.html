@@ -1,94 +1,289 @@
 {% extends "base.html" %}
-{% block title %}Nuevo Materiales{% endblock %}
+{% block title %}Lista de Materiales{% endblock %}
 {% block content %}
-
-<body>
-    <!-- Main container -->
-    <main class="full-box main-container">
-        <!-- Nav lateral -->
-        <section class="full-box nav-lateral">
-            <div class="full-box nav-lateral-bg show-nav-lateral"></div>
-            <div class="full-box nav-lateral-content">
-                <figure class="full-box nav-lateral-avatar">
-                    <i class="far fa-times-circle show-nav-lateral"></i>
-                    <img src="{{ url_for ('static', filename= 'assets/avatar/Avatar.png ') }}" class="img-fluid" alt="Avatar">
-                    <figcaption class="roboto-medium text-center">
-                        Jose Guadalupe Gochi V <br><small class="roboto-condensed-light">Administrador</small>
-                    </figcaption>
-                </figure>
-                <div class="full-box nav-lateral-bar"></div>
-                <nav class="full-box nav-lateral-menu">
-                    <ul>
-                        <li>
-                            <a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </section>
-        <section class="full-box page-content">
-            <nav class="full-box navbar-info">
-                <a href="/" class="float-left show-nav-lateral">
-                    <i class="fas fa-exchange-alt"></i>
-                </a>
-                <a href="/materiales">
-                    <i class="fas fa-user-cog"></i>
-                </a>
-            </nav>
-            <!-- Page header -->
-            <div class="full-box page-header">
-                <h3 class="text-left">
-                    <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MATERIAL
-                </h3>
-            </div>
-            <div class="container-fluid">
-                <ul class="full-box list-unstyled page-nav-tabs">
+<!-- Main container -->
+<main class="full-box main-container">
+    <!-- Nav lateral -->
+    <section class="full-box nav-lateral">
+        <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+        <div class="full-box nav-lateral-content">
+            <figure class="full-box nav-lateral-avatar">
+                <i class="far fa-times-circle show-nav-lateral"></i>
+                <img src="{{ url_for('static', filename='assets/avatar/Avatar.png') }}" class="img-fluid" alt="Avatar">
+                <figcaption class="roboto-medium text-center">
+                    Jose Guadalupe Gochi V <br><small class="roboto-condensed-light">Administrador</small>
+                </figcaption>
+            </figure>
+            <div class="full-box nav-lateral-bar"></div>
+            <nav class="full-box nav-lateral-menu">
+                <ul>
                     <li>
-                        <a href="/materiales"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR MATERIAL</a>
-                    </li>
-                    <li>
-                        <a class="active" href="/listamateriales"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MATERIALES</a>
+                        <a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
                     </li>
                 </ul>
-            </div>
-            
-            <!--CONTENT-->
-            <div class="table-responsive">
-                <table class="table table-dark table-sm mt-4">
-                    <thead>
-                        <tr class="text-center roboto-medium">
-                            <th>#</th>
-                            <th>CLAVE MATERIAL</th>
-                            <th>DESCRIPCION</th>
-                            <th>FECHA DE ALTA</th>
-                            <th>STATUS</th>
-                            <th>RESPONSABLE</th>
-                            <th>FECHA DE BAJA</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for material in materiales %}
-                        <tr class="text-center">
-                            <td>{{ loop.index }}</td>
-                            <td>{{ material['codigo'] }}</td>
-                            <td>{{ material['descripcion'] }}</td>
-                            <td>{{ material['fecha_alta'] }}</td>
-                            <td>{{ material['status'] }}</td>
-                            <td>{{ material['responsable'] }}</td>
-                            <td>{{ material['fecha_baja'] }}</td>
-                            <td>
-                                <a href="{{ url_for('materialactualizar', id=material['id']) }}" class="btn btn-info btn-sm">
-                                    <i class="fas fa-edit"></i> Actualizar
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-</body>
-
+            </nav>
+        </div>
+    </section>
+    <section class="full-box page-content">
+        <nav class="full-box navbar-info">
+            <a href="/" class="float-left show-nav-lateral">
+                <i class="fas fa-exchange-alt"></i>
+            </a>
+            <a href="/materiales">
+                <i class="fas fa-user-cog"></i>
+            </a>
+        </nav>
+        <!-- Page header -->
+        <div class="full-box page-header">
+            <h3 class="text-left">
+                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MATERIAL
+            </h3>
+        </div>
+        <div class="container-fluid">
+            <ul class="full-box list-unstyled page-nav-tabs">
+                <li>
+                    <a href="/materiales"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR MATERIAL</a>
+                </li>
+                <li>
+                    <a class="active" href="/listamateriales"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MATERIALES</a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- CONTENT -->
+        <div class="table-responsive">
+            <table class="table table-dark table-sm mt-4">
+                <thead>
+                    <table class="table table-dark table-sm mt-4">
+                        <thead>
+                            <tr class="text-center roboto-medium">
+                                <th>#</th>
+                                <th>CLAVE MATERIAL</th>
+                                <th>DESCRIPCIÓN</th>
+                                <th>FECHA DE ALTA</th>
+                                <th>STATUS</th>
+                                <th>RESPONSABLE</th>
+                                <th>FECHA DE BAJA</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td>1</td>
+                                <td>M001</td>
+                                <td>Tornillos de acero</td>
+                                <td>2024-08-01</td>
+                                <td>Activo</td>
+                                <td>Juan Pérez</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/1" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>2</td>
+                                <td>M002</td>
+                                <td>Cemento Portland</td>
+                                <td>2024-08-02</td>
+                                <td>Activo</td>
+                                <td>María López</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/2" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>3</td>
+                                <td>M003</td>
+                                <td>Láminas de acero</td>
+                                <td>2024-08-03</td>
+                                <td>Inactivo</td>
+                                <td>Carlos Sánchez</td>
+                                <td>2024-08-10</td>
+                                <td>
+                                    <a href="/materialactualizar/3" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>4</td>
+                                <td>M004</td>
+                                <td>Vigas de hierro</td>
+                                <td>2024-08-04</td>
+                                <td>Activo</td>
+                                <td>Ana García</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/4" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>5</td>
+                                <td>M005</td>
+                                <td>Clavos de acero</td>
+                                <td>2024-08-05</td>
+                                <td>Activo</td>
+                                <td>Pedro Ramírez</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/5" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>6</td>
+                                <td>M006</td>
+                                <td>Madera de pino</td>
+                                <td>2024-08-06</td>
+                                <td>Inactivo</td>
+                                <td>Laura Torres</td>
+                                <td>2024-08-12</td>
+                                <td>
+                                    <a href="/materialactualizar/6" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>7</td>
+                                <td>M007</td>
+                                <td>Alambre de cobre</td>
+                                <td>2024-08-07</td>
+                                <td>Activo</td>
+                                <td>José Fernández</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/7" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>8</td>
+                                <td>M008</td>
+                                <td>Placas de aluminio</td>
+                                <td>2024-08-08</td>
+                                <td>Activo</td>
+                                <td>Sofía Morales</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/8" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>9</td>
+                                <td>M009</td>
+                                <td>Pintura acrílica</td>
+                                <td>2024-08-09</td>
+                                <td>Inactivo</td>
+                                <td>Miguel Martínez</td>
+                                <td>2024-08-15</td>
+                                <td>
+                                    <a href="/materialactualizar/9" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>10</td>
+                                <td>M010</td>
+                                <td>Plomería básica</td>
+                                <td>2024-08-10</td>
+                                <td>Activo</td>
+                                <td>Carmen Díaz</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/10" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>11</td>
+                                <td>M011</td>
+                                <td>Cables eléctricos</td>
+                                <td>2024-08-11</td>
+                                <td>Activo</td>
+                                <td>Ricardo Gómez</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/11" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>12</td>
+                                <td>M012</td>
+                                <td>Arena fina</td>
+                                <td>2024-08-12</td>
+                                <td>Inactivo</td>
+                                <td>Elena Ríos</td>
+                                <td>2024-08-18</td>
+                                <td>
+                                    <a href="/materialactualizar/12" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>13</td>
+                                <td>M013</td>
+                                <td>Vidrios templados</td>
+                                <td>2024-08-13</td>
+                                <td>Activo</td>
+                                <td>Hugo Vázquez</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/13" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>14</td>
+                                <td>M014</td>
+                                <td>Tubería de PVC</td>
+                                <td>2024-08-14</td>
+                                <td>Activo</td>
+                                <td>Isabel Herrera</td>
+                                <td></td>
+                                <td>
+                                    <a href="/materialactualizar/14" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="text-center">
+                                <td>15</td>
+                                <td>M015</td>
+                                <td>Rejillas de acero</td>
+                                <td>2024-08-15</td>
+                                <td>Inactivo</td>
+                                <td>Javier Ruiz</td>
+                                <td>2024-08-20</td>
+                                <td>
+                                    <a href="/materialactualizar/15" class="btn btn-info btn-sm">
+                                        <i class="fas fa-edit"></i> Actualizar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
 {% endblock %}

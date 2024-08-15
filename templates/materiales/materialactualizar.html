@@ -1,66 +1,63 @@
 {% extends "base.html" %}
-{% block title %}Nuevo Material{% endblock %}
+{% block title %}Actualizar Material{% endblock %}
 {% block content %}
-<body>
-    <!-- Main container -->
-    <main class="full-box main-container">
-        <!-- Nav lateral -->
-        <section class="full-box nav-lateral">
-            <div class="full-box nav-lateral-bg show-nav-lateral"></div>
-            <div class="full-box nav-lateral-content">
-                <figure class="full-box nav-lateral-avatar">
-                    <i class="far fa-times-circle show-nav-lateral"></i>
-                    <img src="{{ url_for ('static', filename= 'assets/avatar/Avatar.png ') }}" class="img-fluid" alt="Avatar">
-                    <figcaption class="roboto-medium text-center">
-                        Jose Guadalupe Gochi V <br><small class="roboto-condensed-light">Inventario</small>
-                    </figcaption>
-                </figure>
-                <div class="full-box nav-lateral-bar"></div>
-                <nav class="full-box nav-lateral-menu">
-                    <ul>
-                        <li>
-                            <a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
-                        </li>
-                      
-                    </ul>
-                </nav>
-            </div>
-        </section>
-
-    	<!-- Page content -->
-		<section class="full-box page-content">
-			<nav class="full-box navbar-info">
-				<a href="/" class="float-left show-nav-lateral">
-					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="/materiales">
-					<i class="fas fa-user-cog"></i>
-				</a>
-			
-			</nav>
-
-            <!-- Page header -->
-            <div class="full-box page-header">
-                <h3 class="text-left">
-                    <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; ACTUALIZAR MATERIALES
-                </h3>
-            </div>
-
-            <div class="container-fluid">
-                <ul class="full-box list-unstyled page-nav-tabs">
+<!-- Main container -->
+<main class="full-box main-container">
+    <!-- Nav lateral -->
+    <section class="full-box nav-lateral">
+        <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+        <div class="full-box nav-lateral-content">
+            <figure class="full-box nav-lateral-avatar">
+                <i class="far fa-times-circle show-nav-lateral"></i>
+                <img src="{{ url_for('static', filename='assets/avatar/Avatar.png') }}" class="img-fluid" alt="Avatar">
+                <figcaption class="roboto-medium text-center">
+                    Jose Guadalupe Gochi V <br><small class="roboto-condensed-light">Inventario</small>
+                </figcaption>
+            </figure>
+            <div class="full-box nav-lateral-bar"></div>
+            <nav class="full-box nav-lateral-menu">
+                <ul>
                     <li>
-                        <a href="/materiales"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR MATERIAL</a>
+                        <a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
                     </li>
-                    <li>
-                        <a href="/listamateriales"><i class="fas fa-plus fa-fw"></i> &nbsp; LISTA DE MATERIALES</a>
-                    </li>
-                   
                 </ul>
-            </div>
-            <div class="table-responsive">
+            </nav>
+        </div>
+    </section>
 
-                <div class="container-fluid">
-                <form action="/materiales" method="POST" class="form-neon" autocomplete="off">
+    <!-- Page content -->
+    <section class="full-box page-content">
+        <nav class="full-box navbar-info">
+            <a href="/" class="float-left show-nav-lateral">
+                <i class="fas fa-exchange-alt"></i>
+            </a>
+            <a href="/materiales">
+                <i class="fas fa-user-cog"></i>
+            </a>
+        </nav>
+
+        <!-- Page header -->
+        <div class="full-box page-header">
+            <h3 class="text-left">
+                <i class="fas fa-clipboard-list fa-fw"></i> &nbsp; ACTUALIZAR MATERIAL
+            </h3>
+        </div>
+
+        <div class="container-fluid">
+            <ul class="full-box list-unstyled page-nav-tabs">
+                <li>
+                    <a href="/materiales"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR MATERIAL</a>
+                </li>
+                <li>
+                    <a href="/listamateriales"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE MATERIALES</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Formulario de actualización -->
+        <div class="table-responsive">
+            <div class="container-fluid">
+                <form action="{{ url_for('materialactualizar', id=material.id) }}" method="POST" class="form-neon" autocomplete="off">
                     <fieldset>
                         <legend><i class="far fa-plus-square"></i> &nbsp; Información de Materiales</legend>
                         <div class="container-fluid">
@@ -68,41 +65,40 @@
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="codigo" class="bmd-label-floating">CODIGO MATERIALES</label>
-                                        <input type="text" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="codigo" id="codigo" maxlength="45">
+                                        <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="codigo" id="codigo" maxlength="45" value="{{ material.codigo }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="descripcion" class="bmd-label-floating">DESCRIPCION</label>
-                                        <input type="text" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="descripcion" id="descripcion" maxlength="140">
+                                        <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{1,140}" class="form-control" name="descripcion" id="descripcion" maxlength="140" value="{{ material.descripcion }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="form-group">
                                         <label for="fecha_alta" class="bmd-label-floating">FECHA DE ALTA</label>
-                                        <input type="DATE" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9 ]{1,140}"  class="form-control" name="fecha_alta" id="fecha_alta" maxlength="9">
+                                        <input type="date" class="form-control" name="fecha_alta" id="fecha_alta" value="{{ material.fecha_alta }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="status" class="bmd-label-floating">STATUS</label>
                                         <select class="form-control" name="status" id="status">
-                                            <option value="" selected="" disabled="">Seleccione una opción</option>
-                                            <option selected="" value="Habilitado">ACTIVO</option>
-                                            <option value="Deshabilitado">INACTIVO</option>
+                                            <option value="Habilitado" {% if material.status == 'Habilitado' %}selected{% endif %}>ACTIVO</option>
+                                            <option value="Deshabilitado" {% if material.status == 'Deshabilitado' %}selected{% endif %}>INACTIVO</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="responsable" class="bmd-label-floating">RESPONSABLE</label>
-                                        <input type="text" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9()- ]{1,190}" class="form-control" name="responsable" id="responsable" maxlength="190">
+                                        <input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9()- ]{1,190}" class="form-control" name="responsable" id="responsable" maxlength="190" value="{{ material.responsable }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="fecha_baja" class="bmd-label-floating">FECHA DE BAJA</label>
-                                        <input type="DATE" pattern="[a-zA-záéíóúÁÉÍÓÚñÑ0-9()- ]{1,190}" class="form-control" name="fecha_baja" id="fecha_baja" maxlength="190">
+                                        <input type="date" class="form-control" name="fecha_baja" id="fecha_baja" value="{{ material.fecha_baja }}">
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +110,9 @@
                         &nbsp; &nbsp;
                         <button type="submit" class="btn btn-raised btn-info btn-sm"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
                     </p>
-                    </form>
-             </div>
-                         </div>
-
-        </section>
-    </main>
-</body>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
 {% endblock %}

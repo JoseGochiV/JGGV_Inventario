@@ -11,7 +11,7 @@
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
 					<i class="far fa-times-circle show-nav-lateral"></i>
-					<img src="{{ url_for ('static', filename= 'assets/avatar/Avatar.png ') }}" class="img-fluid" alt="Avatar">
+					<img src="{{ url_for('static', filename='assets/avatar/Avatar.png') }}" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
 						Jose Guadalupe Gochi V<br><small class="roboto-condensed-light">Inventario</small>
 					</figcaption>
@@ -20,87 +20,240 @@
 				<nav class="full-box nav-lateral-menu">
 					<ul>
 						<li>
-							<a href="/"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
+							<a href="{{ url_for('home') }}"><i class="fab fa-dashcube fa-fw"></i> &nbsp; Inicio</a>
 						</li>
-
-
-
-
 					</ul>
 				</nav>
 			</div>
 		</section>
 
-			<!-- Page content -->
-			<section class="full-box page-content">
-				<nav class="full-box navbar-info">
-					<a href="/" class="float-left show-nav-lateral">
-						<i class="fas fa-exchange-alt"></i>
-					</a>
-					<a href="/usuarios">
-						<i class="fas fa-user-cog"></i>
-					</a>
-				
-				</nav>
+		<!-- Page content -->
+		<section class="full-box page-content">
+			<nav class="full-box navbar-info">
+				<a href="{{ url_for('home') }}" class="float-left show-nav-lateral">
+					<i class="fas fa-exchange-alt"></i>
+				</a>
+				<a href="{{ url_for('User') }}">
+					<i class="fas fa-user-cog"></i>
+				</a>
+			</nav>
 
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-left">
 					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS
 				</h3>
-				
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="/usuarios"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR USUARIO</a>
+						<a href="{{ url_for('User') }}"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR USUARIO</a>
 					</li>
 					<li>
-						<a class="active" href="/listar"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
+						<a class="active" href="{{ url_for('listar') }}"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA DE USUARIOS</a>
 					</li>
-					<!---
-					<li>
-						<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR CLIENTE</a>
-					</li>-->	
 				</ul>	
 			</div>
 
 			<!--CONTENT-->
 			<div class="table-responsive">
-
-			<table class="table table-dark table-sm mt-4">
-				<thead>
-					<tr class="text-center roboto-medium">
-						<th>#</th>
-						<th>CLAVE EMPLEADO</th>
-						<th>APELLIDO PATERNO</th>
-						<th>APELLIDO MATERNO</th>
-						<th>NOMBRE</th>
-						<th>ACCIONES</th> 
-					
-					</tr>
-				</thead>
-				<tbody>
-					{% for usuario in usuarios %}
+				<table class="table table-dark table-sm mt-4">
+					<thead>
+						<tr class="text-center roboto-medium">
+							<th>#</th>
+							<th>CLAVE EMPLEADO</th>
+							<th>APELLIDO PATERNO</th>
+							<th>APELLIDO MATERNO</th>
+							<th>NOMBRE</th>
+							<th>ACCIONES</th>
+						</tr>
+					</thead>
+					<tbody>
 						<tr class="text-center">
-						<td>{{ loop.index }}</td>
-						<td>{{ usuario['nombre'] }}</td>
-						<td>{{ usuario['apellido_paterno'] }}</td>
-						<td>{{ usuario['apellido_materno'] }}</td>
-						<td>{{ usuario['clave_empleado'] }}</td>
-						<td>
-							
-                                <a href="{{ url_for('usuariosactualizar', id=usuarios['id']) }}" class="btn btn-info btn-sm">
-                                    <i class="fas fa-edit"></i> Actualizar
-                                </a>
-                            </td>	
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-
-		
+							<td>1</td>
+							<td>E001</td>
+							<td>Pérez</td>
+							<td>García</td>
+							<td>Juan</td>
+							<td>
+								<a href="/usuariosactualizar/1" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>2</td>
+							<td>E002</td>
+							<td>López</td>
+							<td>Morales</td>
+							<td>María</td>
+							<td>
+								<a href="/usuariosactualizar/2" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>3</td>
+							<td>E003</td>
+							<td>Martínez</td>
+							<td>Rodríguez</td>
+							<td>Carlos</td>
+							<td>
+								<a href="/usuariosactualizar/3" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>4</td>
+							<td>E004</td>
+							<td>Gómez</td>
+							<td>Ruiz</td>
+							<td>Ana</td>
+							<td>
+								<a href="/usuariosactualizar/4" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>5</td>
+							<td>E005</td>
+							<td>Ramírez</td>
+							<td>Hernández</td>
+							<td>Pedro</td>
+							<td>
+								<a href="/usuariosactualizar/5" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>6</td>
+							<td>E006</td>
+							<td>Torres</td>
+							<td>Rivas</td>
+							<td>Laura</td>
+							<td>
+								<a href="/usuariosactualizar/6" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>7</td>
+							<td>E007</td>
+							<td>Fernández</td>
+							<td>Suárez</td>
+							<td>José</td>
+							<td>
+								<a href="/usuariosactualizar/7" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>8</td>
+							<td>E008</td>
+							<td>Morales</td>
+							<td>Vázquez</td>
+							<td>Sofía</td>
+							<td>
+								<a href="/usuariosactualizar/8" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>9</td>
+							<td>E009</td>
+							<td>Martínez</td>
+							<td>García</td>
+							<td>Miguel</td>
+							<td>
+								<a href="/usuariosactualizar/9" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>10</td>
+							<td>E010</td>
+							<td>Díaz</td>
+							<td>Pineda</td>
+							<td>Carmen</td>
+							<td>
+								<a href="/usuariosactualizar/10" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>11</td>
+							<td>E011</td>
+							<td>Gómez</td>
+							<td>Reyes</td>
+							<td>Ricardo</td>
+							<td>
+								<a href="/usuariosactualizar/11" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>12</td>
+							<td>E012</td>
+							<td>Ríos</td>
+							<td>Cruz</td>
+							<td>Elena</td>
+							<td>
+								<a href="/usuariosactualizar/12" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>13</td>
+							<td>E013</td>
+							<td>Vázquez</td>
+							<td>Jaramillo</td>
+							<td>Hugo</td>
+							<td>
+								<a href="/usuariosactualizar/13" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>14</td>
+							<td>E014</td>
+							<td>Herrera</td>
+							<td>Salazar</td>
+							<td>Isabel</td>
+							<td>
+								<a href="/usuariosactualizar/14" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+						<tr class="text-center">
+							<td>15</td>
+							<td>E015</td>
+							<td>Ruiz</td>
+							<td>Vega</td>
+							<td>Javier</td>
+							<td>
+								<a href="/usuariosactualizar/15" class="btn btn-info btn-sm">
+									<i class="fas fa-edit"></i> Actualizar
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
 		</section>
 	</main>
 
